@@ -1,0 +1,156 @@
+{% load tailwind_tags %}
+{% tailwind_css %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="{% static 'index.js' %}"></script>
+</head>
+<body class='relative'>
+    
+    <header class='p-2 md:fixed z-50 md:w-full md:left-0 md:top-0 relative text-white mix-blend-difference'>
+
+        <nav class=' md:flex md:justify-center md:items-center '>
+
+            <ul class='md:flex md:flex-row md:justify-between md:items-center md:space-x-16 font-bold hidden'>
+                <li class='hover:bg-linear-to-br from-orange-400 to-rose-600 hover:rounded-full px-4 py-2'>home</li>
+                <li class='hover:bg-linear-to-br from-orange-400 to-rose-600 hover:rounded-full px-4 py-2'>support</li>
+                <li><a href="#" class='p-4 font-bold text-3xl'>logo</a></li>
+                <li class='hover:bg-linear-to-br from-orange-400 to-rose-600 hover:rounded-full px-4 py-2'>about</li>
+                <li class='hover:bg-linear-to-br from-orange-400 to-rose-600 hover:rounded-full px-4 py-2'>chat</li>
+            </ul>
+
+            <ul class='absolute hidden md:flex md:flex-row right-10 md:items-center md:space-x-8 font-bold'>
+                <li>
+                    <a href="{% url "login" %}">
+                        <button class='px-4 py-2 rounded-full hover:bg-linear-to-br from-orange-400 to-rose-600 transition-colors'>
+                            login
+                        </button>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{% url 'signup' %}">
+                        <button class='bg-linear-to-br from-orange-400 to-rose-600 px-4 py-2 rounded-full  hover:scale-105 '>
+                            sign up
+                        </button>
+                    </a>
+                    
+                </li>
+            </ul>
+
+            <div class='md:hidden flex justify-evenly items-start relative p-4 font-bold text-2xl h-screen w-50vw '>
+
+                <button class='absolute right-0' id='button-toggle'>
+
+                    <i class="fa-solid fa-bars"></i>
+
+                </button>   
+
+                <nav class='absolute right-10 space-y-10 hidden' id='menu-content'>
+
+                    <ul class='space-y-10'>
+                        <li>home</li>
+                        <li>support</li>
+                        <li>about</li>
+                        <li>chat</li>
+                    </ul>
+                    <ul class='space-y-5'>
+                        <li>login</li>
+                        <li>sign up</li>
+
+                    </ul>
+
+                
+                </nav>
+
+
+            </div>
+
+        </nav>
+
+    </header>
+
+    <section class='h-screen w-full relative flex justify-center items-center overflow-hidden'>
+
+        <!-- Faded background image -->
+        <img 
+            src="{% static '/images/Backgorundimage-2.jpg' %}" 
+            alt="" 
+            class='absolute inset-0 w-full h-full object-cover object-center opacity-25 blur-10 saturate-25 scale-105'
+        >
+
+        <!-- Gradient overlay -->
+        <div class='absolute inset-0 bg-linear-to-br from-[#1a0a2e] via-[#6b1a3a] to-[#f4845f] opacity-80'></div>
+
+        <!-- Glow orb top-left -->
+        <div class='absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-pink-500/20 blur-3xl'></div>
+
+        <!-- Glow orb bottom-right -->
+        <div class='absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full bg-purple-600/20 blur-3xl'></div>
+
+        <!-- Content -->
+        <div class='z-10 relative text-center px-8 max-w-4xl mx-auto'>
+
+            <p class='text-sm font-semibold tracking-[0.3em] uppercase mb-4 text-orange-400'>
+                ✦ Find Your Person ✦
+            </p>
+
+            <h1 class='font-bold leading-tight mb-6 text-6xl lg:text-8xl text-white drop-shadow-lg tracking-tight'>
+                Finding love<br>
+                <span class='text-pink-200'>is now easy</span>
+            </h1>
+
+            <h2 class='text-xl font-medium mb-4 text-white/85 tracking-wide'>
+                Stop swiping and start connecting.
+            </h2>
+
+            <p class='text-base leading-relaxed max-w-xl mx-auto text-pink-100/75'>
+                Our smart algorithm skips the small talk by matching you with people who actually share your interests. Finding your person shouldn't feel like a second job.
+            </p>
+
+            <div class='mt-10 flex gap-4 justify-center flex-wrap'>
+                <a href="{% url "profiles" %}">
+                    <button class='px-8 py-3 rounded-full font-semibold text-sm tracking-wide text-white bg-linear-to-br from-orange-400 to-rose-600 shadow-lg shadow-rose-700/50 hover:scale-105 transition-transform duration-200 cursor-pointer'>
+                        Get Started Free
+                    </button>
+                </a>
+                <button class='px-8 py-3 rounded-full font-semibold text-sm tracking-wide text-white bg-white/10 border border-white/30 backdrop-blur-md hover:bg-white/20 transition-colors duration-200 cursor-pointer'>
+                    See How It Works
+                </button>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class='py-20 w-full z-0 bg-gray-200'>
+
+    </section>
+
+
+
+
+
+
+
+
+
+
+    <script>
+        // Remove the '#' from inside the quotes
+        const btn = document.getElementById('button-toggle'); 
+        const menu = document.getElementById('menu-content');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,77 @@
+{% load tailwind_tags %}
+{% tailwind_css %}
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+</head>
+<body>
+
+
+    <div class='min-h-screen flex justify-center items-center'>
+
+        <div class="bg-white p-8 rounded-2xl shadow-lg w-full max-w-md">
+            
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-2">Welcome Back</h2>
+            <p class="text-center text-gray-500 mb-8">Login to your account</p>
+
+            {% if error %}
+                <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg mb-6">
+                    {{ error }}
+                </div>
+            {% endif %}
+
+            <form method="POST" action="{% url 'login' %}">
+                    {% csrf_token %}
+                    <div class="mb-4">
+
+                        <label class="block text-gray-700 text-sm font-semibold mb-2">
+                            Username
+                        </label>
+
+                        <input type="text" 
+                            name="username"  
+                            placeholder="Enter your username" 
+                            required
+                            class='w-full px-4 py-3 border border-gray-300 rounded-lg
+                           focus:outline-none focus:ring-2 focus:ring-blue-500
+                           focus:border-transparent transition'>
+
+                    </div>
+
+                    <div class='mb-4'>
+
+                        <label class="block text-gray-700 text-sm font-semibold mb-2">
+                            Password
+                        </label>
+                        <input type="password" 
+                            name="password"  
+                            placeholder="Enter your password" 
+                            required
+                            class='w-full px-4 py-3 border border-gray-300 rounded-lg
+                            focus:outline-none focus:ring-2 focus:ring-blue-500
+                            focus:border-transparent transition'>
+
+                    </div>
+
+                    {% if error %}
+                        <p style="color:red;">{{ error }}</p>
+                    {% endif %}
+
+                    <button type="submit">Login</button>
+                    <a href="{% url 'signup' %}">Don't have an account? Sign Up</a>
+
+                    <button type='submit' class='w-full px-4 py-3 bg-blue-500 hover:bg-blue-800 transition mt-4 rounded-lg'> submit</button>
+            </form>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
